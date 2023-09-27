@@ -1,0 +1,79 @@
+<div class="filter-panel">
+  <input
+    class="filter-input"
+    placeholder="Поиск"
+    [(ngModel)]="searchQuery"
+    (input)="toggleSearch(searchQuery)"
+  />
+
+  <div class="multi-select">
+    <input
+      type="text"
+      placeholder="Выберите авторов"
+      readonly
+      (click)="toggleAuthorsOptions()"
+    />
+    <ul class="options" *ngIf="showAuthorsOptions">
+      <li *ngFor="let author of selectedAuthors">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedAuthors.includes(author)"
+            (change)="toggleAuthor(author)"
+          />
+          {{ author }}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="multi-select">
+    <input
+      type="text"
+      placeholder="Выберите язык"
+      readonly
+      (click)="toggleLanguagesOptions()"
+    />
+    <ul class="options" *ngIf="showLanguagesOptions">
+      <li *ngFor="let language of selectedLanguages">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedLanguages.includes(language)"
+            (change)="toggleLanguage(language)"
+          />
+          {{ language }}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="filter-range">
+    <input
+      type="number"
+      placeholder="От"
+      [(ngModel)]="minPageCount"
+      (input)="togglePageCountFilter(minPageCount, maxPageCount)"
+    />
+    <span></span>
+    <input
+      type="number"
+      placeholder="До"
+      [(ngModel)]="maxPageCount"
+      (input)="togglePageCountFilter(minPageCount, maxPageCount)"
+    />
+  </div>
+
+  <select
+    class="filter-select"
+    [(ngModel)]="selectedGenre"
+    (change)="toggleGenre(selectedGenre)"
+  >
+    <option value="">Выберите жанр</option>
+    <option *ngFor="let genre of selectedGenres" [value]="genre">
+      {{ genre }}
+    </option>
+  </select>
+  <button (click)="navigateToCreateBook()">Добавить книгу</button>
+  <button (click)="navigateToAuthors()">Редактировать авторов</button>
+</div>

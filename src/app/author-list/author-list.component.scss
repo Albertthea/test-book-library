@@ -1,0 +1,40 @@
+.authors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.authors-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.author-item {
+  margin: 10px 0;
+  list-style: none;
+}
+
+.author-input {
+  margin-right: 10px;
+}
+
+.remove-button {
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 147px;
+}

@@ -1,0 +1,28 @@
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.book-card img {
+  max-width: 100%;
+}
+
+.book-info {
+  margin-top: 10px;
+}
+
+.book-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.book-author,
+.book-description {
+  font-size: 0.9em;
+}

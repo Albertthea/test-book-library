@@ -1,0 +1,13 @@
+<div class="book-list">
+  <div
+    class="book-card"
+    *ngFor="let book of filteredBooks.length > 0 ? filteredBooks : books"
+  >
+    <ng-container *ngIf="book">
+      <app-book-details
+        [book]="book"
+        (click)="goToBookDetails(book)"
+      ></app-book-details>
+    </ng-container>
+  </div>
+</div>

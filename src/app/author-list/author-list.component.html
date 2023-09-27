@@ -1,0 +1,13 @@
+<div class="authors-container">
+  <h2>Авторы</h2>
+  <ul>
+    <li *ngFor="let author of authors; let i = index" class="author-item">
+      <input [(ngModel)]="authors[i]" class="author-input" />
+      <button (click)="removeAuthor(i)" class="remove-button">Удалить</button>
+    </li>
+    <button (click)="addAuthor()" class="add-button">
+      Добавить нового автора
+    </button>
+  </ul>
+  <button (click)="saveAuthors()" class="save-button">Сохранить</button>
+</div>

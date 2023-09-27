@@ -1,0 +1,38 @@
+.filter-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  height: 150px;
+}
+
+.filter-group {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.filter-group:last-child {
+  margin-right: 0;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  margin-right: 10px;
+}
+
+.input-group select,
+.input-group input {
+  height: 30px;
+  width: 100%;
+}
+
+ul.options {
+  list-style: none;
+}

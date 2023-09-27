@@ -2,11 +2,14 @@
   "name": "books-app",
   "version": "0.0.0",
   "scripts": {
+    "start": "ts-node server.ts",
+    "start-server": "node server.js",
+    "start-client": "ng serve",
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js --config src/config/postgres.config.ts"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +21,16 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^15.1.1",
+    "@types/express": "^4.17.18",
+    "angular-sqlite": "^0.1.0",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.1",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typeorm": "^0.3.17",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -27,6 +38,7 @@
     "@angular/cli": "~16.2.3",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
+    "@types/node": "^20.7.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
