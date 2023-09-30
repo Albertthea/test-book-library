@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
-import { IdService } from '../id.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-book-create',
@@ -30,14 +30,14 @@ export class BookCreateComponent implements OnInit {
   });
 
   constructor(
-    private bookService: BookService,
+    public bookService: BookService,
     private router: Router,
-    private idService: IdService
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     if (this.book) {
-      console.log('aaa');
+      this.isEditMode = true;
       this.form.patchValue({
         titleInput: this.book.title,
         descriptionInput: this.book.description,
@@ -65,15 +65,33 @@ export class BookCreateComponent implements OnInit {
         genre: genreValue ?? '',
         language: languageValue ?? '',
         pageCount: pageCountValue || 0,
-        id: this.idService.getNextId() ?? '',
       };
 
       if (this.book && this.book.id) {
-        console.log('ddd');
-        this.bookService.updateBook(this.book.id, newBook);
+        this.bookService.updateBook(this.book.id, newBook).subscribe({
+          next: (updatedBook) => {
+            console.log('Книга успешно обновлена', updatedBook);
+
+            if (updatedBook) {
+              this.book = updatedBook;
+              this.isEditMode = false;
+            }
+
+            this.router.navigate(['/books', this.book?.id]);
+          },
+          error: (error) => {
+            console.error('Ошибка при обновлении книги', error);
+          },
+        });
       } else {
-        console.log(newBook);
-        this.bookService.addBook(newBook);
+        this.bookService.addBook(newBook).subscribe(
+          (addedBook) => {
+            console.log('Книга успешно добавлена', addedBook);
+          },
+          (error) => {
+            console.error('Ошибка при добавлении книги', error);
+          }
+        );
       }
 
       this.form.reset();

@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
@@ -9,7 +9,7 @@ import { FilterService } from '../filter.service';
   templateUrl: './filter-panel.component.html',
   styleUrls: ['./filter-panel.component.scss'],
 })
-export class FilterPanelComponent {
+export class FilterPanelComponent implements OnInit {
   @Output() filterChange = new EventEmitter<any>();
   selectedAuthors: string[] = [];
   selectedLanguages: string[] = [];
@@ -25,6 +25,12 @@ export class FilterPanelComponent {
     private router: Router,
     private filterService: FilterService
   ) {}
+
+  ngOnInit() {
+    this.getAuthors();
+    this.getLanguages();
+    this.getGenres();
+  }
 
   showAuthorsOptions: boolean = false;
   showLanguagesOptions: boolean = false;
@@ -69,7 +75,6 @@ export class FilterPanelComponent {
     } else {
       this.selectedLanguages.push(language);
     }
-
     const selectedFilters = {
       selectedLanguages: this.selectedLanguages,
     };

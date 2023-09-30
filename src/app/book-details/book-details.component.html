@@ -16,5 +16,8 @@
       <p><strong>Количество страниц:</strong> {{ book?.pageCount }}</p>
     </div>
     <button class="edit-button" (click)="edit()">Редактировать</button>
+    <button *ngIf="showDetails" class="edit-button" (click)="back()">
+      Все книги
+    </button>
   </div>
 </ng-template>

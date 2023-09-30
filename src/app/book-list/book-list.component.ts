@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BookService } from '../book.service';
 import { Book } from '../book.model';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class BookListComponent implements OnInit {
   minPageCount: number | null = 1;
   maxPageCount: number | null = null;
   searchQuery: string = '';
+  @Input() showDetails: boolean = false;
 
   constructor(
     private bookService: BookService,
@@ -90,7 +91,6 @@ export class BookListComponent implements OnInit {
             book.title.toLowerCase().includes(query.toLowerCase()) ||
             book.description?.toLowerCase().includes(query.toLowerCase())
         );
-      console.log(matchesSearchQueries);
 
       return (
         matchesAuthor && matchesLanguage && matchesGenre && matchesSearchQueries

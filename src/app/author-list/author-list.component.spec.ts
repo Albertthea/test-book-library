@@ -8,7 +8,7 @@ describe('AuthorListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AuthorListComponent]
+      declarations: [AuthorListComponent],
     });
     fixture = TestBed.createComponent(AuthorListComponent);
     component = fixture.componentInstance;
@@ -17,5 +17,10 @@ describe('AuthorListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a title', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Авторы');
   });
 });

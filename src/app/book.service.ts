@@ -43,8 +43,8 @@ export class BookService {
     return this.http.get<Book>(`${this.apiUrl}/${id}`);
   }
 
-  updateBook(id: string, updatedBook: Book): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, updatedBook);
+  updateBook(id: string, updatedBook: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.apiUrl}/${id}`, updatedBook);
   }
 
   addBook(newBook: Book): Observable<Book> {

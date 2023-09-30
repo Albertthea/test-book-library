@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-details',
@@ -10,11 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookDetailsComponent {
   @Input() book!: Book | undefined;
+  @Input() showDetails: boolean = true;
   @Output() editClick = new EventEmitter<void>();
   editMode = false;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private bookService: BookService
   ) {}
 
@@ -34,5 +37,9 @@ export class BookDetailsComponent {
 
   edit() {
     this.editMode = true;
+  }
+
+  back() {
+    this.router.navigate(['/book']);
   }
 }
