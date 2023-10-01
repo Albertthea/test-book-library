@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BookDetailsComponent } from './book-details.component';
+import { FilterPanelComponent } from '../filter-panel/filter-panel.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BookCreateComponent } from 'src/app/book-create/book-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
@@ -8,7 +12,16 @@ describe('BookDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BookDetailsComponent],
+      declarations: [
+        BookDetailsComponent,
+        FilterPanelComponent,
+        BookCreateComponent,
+      ],
+      imports: [
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([]),
+      ],
     });
     fixture = TestBed.createComponent(BookDetailsComponent);
     component = fixture.componentInstance;

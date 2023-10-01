@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AuthorListComponent } from './author-list.component';
 
 describe('AuthorListComponent', () => {
@@ -9,6 +9,7 @@ describe('AuthorListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AuthorListComponent],
+      imports: [HttpClientModule],
     });
     fixture = TestBed.createComponent(AuthorListComponent);
     component = fixture.componentInstance;
